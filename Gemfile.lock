@@ -7,6 +7,15 @@ GIT
       activemodel (>= 4.0)
       railties (>= 4.0)
 
+GIT
+  remote: git@github.com:CruGlobal/cru_lib.git
+  revision: d281011a3646716fc1efa4f58bc5c4a14989c153
+  specs:
+    cru_lib (0.0.4)
+      active_model_serializers
+      global_registry
+      redis
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -54,10 +63,6 @@ GEM
     coderay (1.1.0)
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
-    cru_lib (0.0.3)
-      active_model_serializers
-      global_registry
-      redis
     diff-lcs (1.2.5)
     docile (1.1.5)
     dotenv (2.0.2)
@@ -250,7 +255,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers!
-  cru_lib (~> 0.0.3)
+  cru_lib (~> 0.0.4)!
   dotenv-rails
   factory_girl_rails
   guard-rspec

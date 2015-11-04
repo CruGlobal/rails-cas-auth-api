@@ -28,7 +28,7 @@ module V1
         email: st.user,
         first_name: st.extra_attributes['firstName'],
         last_name: st.extra_attributes['lastName']
-      ).generate_access_token
+      )
     end
   end
 end
