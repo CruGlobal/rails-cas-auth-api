@@ -17,8 +17,11 @@ gem 'rubycas-client-rails'
 
 gem 'cru_lib', '~> 0.0.4', git: 'git@github.com:CruGlobal/cru_lib.git'
 
-group :development, :test do
+group :development, :staging, :test do
   gem 'dotenv-rails'
+end
+
+group :development, :test do
   gem 'guard-rubocop'
   gem 'guard-rspec'
   gem 'rspec-rails'
