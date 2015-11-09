@@ -1,5 +1,5 @@
 class MonitorsController < ApplicationController
-  # newrelic_ignore
+  newrelic_ignore
 
   def lb
     render text: 'OK'
