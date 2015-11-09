@@ -1,7 +1,7 @@
 module V1
   class ServicesController < ApplicationController
     def show
-      render json: { service: v1_service_url }
+      render json: ServiceUrl.new(url: new_v1_token_url)
     end
   end
 end

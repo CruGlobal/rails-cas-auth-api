@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   get 'monitors/lb'
-  api_version(module: 'V1', path: { value: 'v1' }, default: true) do
-    resources :tokens, only: [:new, :destroy] do
-      get :service
-    end
-
-    resource :service
+  api_version(module: 'V1', path: { value: 'v1' }) do
+    resources :tokens, only: [:new, :destroy]
+    resource :service, only: [:show]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
