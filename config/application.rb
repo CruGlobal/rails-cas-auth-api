@@ -15,23 +15,23 @@ Bundler.require(*Rails.groups)
 
 module CasAuthenticatedApi
   class Application < Rails::Application
-        config.assets.enabled = false
+    config.assets.enabled = false
     config.generators do |g|
       g.test_framework :rspec, fixture: true
       g.view_specs false
       g.helper_specs false
       g.template_engine false
-      g.stylesheets     false
-      g.javascripts     false
+      g.stylesheets false
+      g.javascripts false
     end
 
-    config.middleware.insert_before 0, "Rack::Cors" do
+    config.middleware.insert_before 0, 'Rack::Cors' do
       allow do
         origins '*'
         resource '*',
-          :headers => :any,
-          :methods => [:get, :post, :delete, :put, :patch, :options, :head],
-          :max_age => 0
+                 headers: :any,
+                 methods: [:get, :post, :delete, :put, :patch, :options, :head],
+                 max_age: 0
       end
     end
 
