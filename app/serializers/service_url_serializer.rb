@@ -1,7 +1,6 @@
 class ServiceUrlSerializer < ActiveModel::Serializer
-  attributes :url
 
   def id
-    url
+    object.url
   end
 end
