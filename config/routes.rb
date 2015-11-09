@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'monitors/lb'
   api_version(module: 'V1', path: { value: 'v1' }) do
-    resources :tokens, only: [:new, :destroy]
+    resource :token, only: [:new, :destroy]
     resource :service, only: [:show]
   end
   # The priority is based upon order of creation: first created -> highest priority.

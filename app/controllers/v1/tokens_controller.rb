@@ -16,7 +16,7 @@ module V1
     def validate_service_ticket(ticket)
       st = CASClient::ServiceTicket.new(
         ticket,
-        v1_service_url
+        new_v1_token_url
       )
       RubyCAS::Filter.client.validate_service_ticket(st)
     end
