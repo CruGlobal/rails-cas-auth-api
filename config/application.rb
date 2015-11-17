@@ -36,7 +36,6 @@ module CasAuthenticatedApi
     end
 
     config.log_formatter = ::Logger::Formatter.new
-    config.middleware.swap Rails::Rack::Logger, Silencer::Logger, config.log_tags, silence: ['/monitors/lb']
 
     # RubyCAS config
     config.rubycas.cas_base_url = ENV.fetch('CAS_BASE_URL')

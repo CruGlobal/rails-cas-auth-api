@@ -223,8 +223,6 @@ GEM
     shoulda-context (1.2.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-    silencer (0.6.0)
-      railties (>= 3)
     simplecov (0.10.0)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -276,7 +274,6 @@ DEPENDENCIES
   rubocop (~> 0.34.0)
   rubycas-client-rails
   shoulda
-  silencer
   simplecov
   spring
   syslog-logger
