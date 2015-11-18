@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     resource :token, only: [:new, :destroy]
     resource :service, only: [:show]
   end
+
+  # Catch all POST requests for CAS Single Sign Out callback
+  post '*path', to: 'cas#logout'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
