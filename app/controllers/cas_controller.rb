@@ -16,7 +16,7 @@ class CasController < ApplicationController
 
   def service_ticket
     xml = XmlSimple.xml_in(params[:logoutRequest])
-    xml['IssueInstant']
+    xml['SessionIndex'][0]
   rescue
     nil
   end
