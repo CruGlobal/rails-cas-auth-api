@@ -1,5 +1,9 @@
 module V1
   class TokensController < ApplicationController
+    include CruLib::AccessTokenProtectedConcern
+
+    before_action :authenticate_request, except: [:new]
+
     def new
       render_error "You must pass in a service ticket ('st' parameter)" and return if params[:st].blank?
 
@@ -8,6 +12,11 @@ module V1
 
       access_token = generate_access_token(st)
       render json: access_token
+    end
+
+    def destroy
+      CruLib::AccessToken.del(@access_token.token)
+      render status: :ok, plain: 'OK'
     end
 
     protected
