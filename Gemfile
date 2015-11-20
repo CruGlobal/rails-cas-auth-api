@@ -17,6 +17,8 @@ gem 'rubycas-client-rails'
 
 gem 'cru_lib', '~> 0.0.4', git: 'git@github.com:CruGlobal/cru_lib.git'
 
+gem 'xml-simple', require: 'xmlsimple'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'guard-rubocop'

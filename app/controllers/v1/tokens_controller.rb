@@ -11,6 +11,7 @@ module V1
       render_error 'Invalid service ticket' and return unless st.is_valid?
 
       access_token = generate_access_token(st)
+      store_service_ticket(st, access_token)
       render json: access_token
     end
 
@@ -38,6 +39,12 @@ module V1
         first_name: st.extra_attributes['firstName'],
         last_name: st.extra_attributes['lastName']
       )
+    end
+
+    # Stores a Service Ticket to Access Token relationship
+    # This is used to invalidate access tokens when CAS session expires
+    def store_service_ticket(ticket, token)
+      CruLib.redis_client.setex(redis_ticket_key(ticket), 2.hours.to_i, token.token)
     end
   end
 end
