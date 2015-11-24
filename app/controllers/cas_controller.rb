@@ -1,5 +1,4 @@
 class CasController < ApplicationController
-
   def logout
     render_error 'POST method not supported' and return unless logout_request?
     ticket = service_ticket
