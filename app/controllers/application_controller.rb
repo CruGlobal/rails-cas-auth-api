@@ -4,7 +4,11 @@ class ApplicationController < ActionController::API
   protected
 
   def redis_ticket_key(ticket)
-    ['rails_cas_auth_client:service_ticket', ticket].join(':')
+    ['rails_cas_auth_client', 'service_ticket', ticket].join(':')
+  end
+
+  def redis_pgt_iou_key(pgt_iou)
+    ['rails_cas_auth_client', 'pgt_iou', pgt_iou].join(':')
   end
 
   def render_error(message, options = {})

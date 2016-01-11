@@ -6,6 +6,13 @@ class CasController < ApplicationController
     render status: :ok, plain: 'OK'
   end
 
+  def proxy_callback
+    CruLib.redis_client.setex(
+      redis_pgt_iou_key(params[:pgtIou]), 30, params[:pgtId]
+    ) unless params[:pgtId].blank? || params[:pgtIou].blank?
+    render status: :ok, plain: 'OK'
+  end
+
   private
 
   def logout_request?

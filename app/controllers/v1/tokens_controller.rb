@@ -28,6 +28,7 @@ module V1
         ticket,
         new_v1_token_url
       )
+      RubyCAS::Filter.client.proxy_callback_url = proxy_callback_url
       RubyCAS::Filter.client.validate_service_ticket(st)
     end
 
@@ -37,7 +38,8 @@ module V1
         key_guid: st.extra_attributes['ssoGuid'],
         email: st.user,
         first_name: st.extra_attributes['firstName'],
-        last_name: st.extra_attributes['lastName']
+        last_name: st.extra_attributes['lastName'],
+        pgt: CruLib.redis_client.get(redis_pgt_iou_key(st.pgt_iou))
       )
     end
 
