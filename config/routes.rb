@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   get 'proxy_callback', to: 'cas#proxy_callback'
 
   # Catch all POST requests for CAS Single Sign Out callback
-  post '*path', to: 'cas#logout'
+  post '*path', to: 'cas#logout', as: 'logout'
 end
