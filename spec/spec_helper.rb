@@ -18,7 +18,7 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 if ENV['COVERALLS_REPO_TOKEN']
   require 'coveralls'
-  Coveralls.wear_merged!('rails')
+  Coveralls.wear!
 end
 
 RSpec.configure do |config|
