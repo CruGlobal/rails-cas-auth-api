@@ -36,4 +36,5 @@ group :test do
   gem 'shoulda', require: false
   gem 'rubocop', '~> 0.34.0'
   gem 'fakeredis', :require => 'fakeredis/rspec'
+  gem 'coveralls', require: false
 end
