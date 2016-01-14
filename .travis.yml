@@ -8,6 +8,3 @@ services:
 script:
 - bundle exec rubocop -R
 - bundle exec rspec spec
-branches:
-  only:
-  - master
