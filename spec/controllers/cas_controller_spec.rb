@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe CasController, type: :controller do
-
   describe 'GET #proxy_callback' do
     it 'responds successfully with an HTTP 200 OK when missing pgtIou' do
       get :proxy_callback
@@ -28,14 +27,12 @@ RSpec.describe CasController, type: :controller do
     end
 
     it 'responds successfully with an HTTP 200' do
-      logout_request = %q(
-        <samlp:LogoutRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+      logout_request = '<samlp:LogoutRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
             xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
             ID="1" Version="2.0" IssueInstant="2015-09-17T15:12:20Z">
           <saml:NameID>@NOT_USED@</saml:NameID>
           <samlp:SessionIndex>1</samlp:SessionIndex>
-        </samlp:LogoutRequest>
-      )
+        </samlp:LogoutRequest>'
       post :logout, path: 'logout', logoutRequest: logout_request
       expect(response).to be_success
       expect(response).to have_http_status(200)

@@ -35,7 +35,7 @@ module V1
     # Generate Access Token
     def generate_access_token(st)
       map = { guid: 'ssoGuid', email: 'email', key_guid: 'theKeyGuid',
-              relay_guid: '', first_name: 'firstName', last_name: 'lastName'}
+              relay_guid: '', first_name: 'firstName', last_name: 'lastName' }
       attributes = {}
       map.each do |k, v|
         attributes[k] = st.extra_attributes[v] if st.extra_attributes.key?(v)
