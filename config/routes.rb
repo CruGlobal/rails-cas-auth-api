@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   # Catch all POST requests for CAS Single Sign Out callback
   post '*path', to: 'cas#logout', as: 'logout'
+
+  get 'monitors/block'
 end
