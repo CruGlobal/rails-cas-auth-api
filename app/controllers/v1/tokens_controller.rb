@@ -28,17 +28,20 @@ module V1
         ticket,
         new_v1_token_url
       )
+      RubyCAS::Filter.client.proxy_callback_url = proxy_callback_url
       RubyCAS::Filter.client.validate_service_ticket(st)
     end
 
     # Generate Access Token
     def generate_access_token(st)
-      CruLib::AccessToken.new(
-        key_guid: st.extra_attributes['ssoGuid'],
-        email: st.user,
-        first_name: st.extra_attributes['firstName'],
-        last_name: st.extra_attributes['lastName']
-      )
+      map = { guid: 'ssoGuid', email: 'email', key_guid: 'theKeyGuid',
+              relay_guid: '', first_name: 'firstName', last_name: 'lastName' }
+      attributes = {}
+      map.each do |k, v|
+        attributes[k] = st.extra_attributes[v] if st.extra_attributes.key?(v)
+      end
+      attributes[:pgt] = CruLib.redis_client.get(redis_pgt_iou_key(st.pgt_iou))
+      CruLib::AccessToken.new(attributes)
     end
 
     # Stores a Service Ticket to Access Token relationship

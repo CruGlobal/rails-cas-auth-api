@@ -15,7 +15,7 @@ gem 'oj_mimic_json'
 # rubyCAS
 gem 'rubycas-client-rails'
 
-gem 'cru_lib', '~> 0.0.5'
+gem 'cru_lib', git: 'https://github.com/CruGlobal/cru_lib.git'
 
 gem 'xml-simple', require: 'xmlsimple'
 
@@ -26,6 +26,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'spring'
   gem 'pry-rails'
+  gem 'awesome_print'
 end
 
 group :test do
@@ -34,4 +35,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda', require: false
   gem 'rubocop', '~> 0.34.0'
+  gem 'fakeredis', :require => 'fakeredis/rspec'
+  gem 'coveralls', require: false
 end
