@@ -7,15 +7,6 @@ GIT
       activemodel (>= 4.0)
       railties (>= 4.0)
 
-GIT
-  remote: https://github.com/CruGlobal/cru_lib.git
-  revision: 8da4a0abb7195c0ad4e23aaf26e55ead312c441a
-  specs:
-    cru_lib (0.0.6)
-      active_model_serializers
-      global_registry
-      redis
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -72,6 +63,9 @@ GEM
       tins (~> 1.6.0)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    cru-auth-lib (0.1.0)
+      active_model_serializers (>= 0.10.0.rc1)
+      redis (~> 3.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
     dotenv (2.0.2)
@@ -88,12 +82,6 @@ GEM
       redis (~> 3.0)
     ffi (1.9.10)
     formatador (0.2.5)
-    global_registry (1.0.8)
-      activesupport
-      oj (~> 2.13.0)
-      oj_mimic_json
-      rest-client (~> 1.6.7)
-      retryable-rb (~> 1.1.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     guard (2.13.0)
@@ -187,10 +175,9 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
-    redis (3.2.2)
+    redis (3.3.3)
     rest-client (1.6.9)
       mime-types (~> 1.16)
-    retryable-rb (1.1.0)
     rollbar (2.7.1)
       multi_json
     rspec (3.4.0)
@@ -274,7 +261,7 @@ DEPENDENCIES
   active_model_serializers!
   awesome_print
   coveralls
-  cru_lib!
+  cru-auth-lib (~> 0.1.0)
   dotenv-rails
   factory_girl_rails
   fakeredis
@@ -301,4 +288,4 @@ DEPENDENCIES
   xml-simple
 
 BUNDLED WITH
-   1.10.6
+   1.14.6

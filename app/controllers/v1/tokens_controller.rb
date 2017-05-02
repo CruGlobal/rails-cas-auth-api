@@ -1,6 +1,6 @@
 module V1
   class TokensController < ApplicationController
-    include CruLib::AccessTokenProtectedConcern
+    include CruAuthLib::AccessTokenProtectedConcern
 
     before_action :authenticate_request, except: [:new]
 
@@ -16,7 +16,7 @@ module V1
     end
 
     def destroy
-      CruLib::AccessToken.del(@access_token.token)
+      CruAuthLib::AccessToken.del(@access_token.token)
       render status: :ok, plain: 'OK'
     end
 
@@ -40,14 +40,14 @@ module V1
       map.each do |k, v|
         attributes[k] = st.extra_attributes[v] if st.extra_attributes.key?(v)
       end
-      attributes[:pgt] = CruLib.redis_client.get(redis_pgt_iou_key(st.pgt_iou))
-      CruLib::AccessToken.new(attributes)
+      attributes[:pgt] = CruAuthLib.redis_client.get(redis_pgt_iou_key(st.pgt_iou))
+      CruAuthLib::AccessToken.new(attributes)
     end
 
     # Stores a Service Ticket to Access Token relationship
     # This is used to invalidate access tokens when CAS session expires
     def store_service_ticket(ticket, token)
-      CruLib.redis_client.setex(redis_ticket_key(ticket), 2.hours.to_i, token.token)
+      CruAuthLib.redis_client.setex(redis_ticket_key(ticket), 2.hours.to_i, token.token)
     end
   end
 end
