@@ -16,7 +16,7 @@ RSpec.describe CasController, type: :controller do
       get :proxy_callback, pgtIou: pgt_iou, pgtId: pgt_id
       expect(response).to be_success
       expect(response).to have_http_status(200)
-      expect(CruLib.redis_client.get(redis_key)).to eq(pgt_id)
+      expect(CruAuthLib.redis_client.get(redis_key)).to eq(pgt_id)
     end
   end
 

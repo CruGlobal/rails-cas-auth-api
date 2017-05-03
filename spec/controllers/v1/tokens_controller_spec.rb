@@ -39,7 +39,7 @@ RSpec.describe V1::TokensController, type: :controller do
       stub_request(:any, "#{ENV['CAS_BASE_URL']}/proxyValidate")
         .with(query: hash_including(ticket: service_ticket))
         .to_return(status: 200, body: proxy_validate_response)
-      CruLib.redis_client.setex(redis_key, 30, pgt)
+      CruAuthLib.redis_client.setex(redis_key, 30, pgt)
       get :new, st: service_ticket
       expect(response).to be_success
       expect(response).to have_http_status(200)
@@ -72,13 +72,13 @@ RSpec.describe V1::TokensController, type: :controller do
   context '#destroy' do
     it 'responds with an HTTP 200 and destroys the access_token' do
       guid = '3719A628-9EFC-4D62-B019-0C7B8D066F55'
-      access_token = CruLib::AccessToken.new(key_guid: guid)
+      access_token = CruAuthLib::AccessToken.new(key_guid: guid)
       token = access_token.attributes[:token]
       request.env['HTTP_AUTHORIZATION'] = "Bearer #{token}"
       delete :destroy
       expect(response).to be_successful
       expect(response).to have_http_status(200)
-      expect(CruLib::AccessToken.read(token)).to be_nil
+      expect(CruAuthLib::AccessToken.read(token)).to be_nil
     end
   end
 end
