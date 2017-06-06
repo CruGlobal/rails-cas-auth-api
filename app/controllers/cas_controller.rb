@@ -7,7 +7,7 @@ class CasController < ApplicationController
   end
 
   def proxy_callback
-    CruLib.redis_client.setex(
+    CruAuthLib.redis_client.setex(
       redis_pgt_iou_key(params[:pgtIou]), 30, params[:pgtId]
     ) unless params[:pgtId].blank? || params[:pgtIou].blank?
     render status: :ok, plain: 'OK'
@@ -28,7 +28,7 @@ class CasController < ApplicationController
   end
 
   def invalidate_ticket(ticket)
-    token = CruLib.redis_client.del(redis_ticket_key(ticket))
-    CruLib::AccessToken.del(token) if token
+    token = CruAuthLib.redis_client.del(redis_ticket_key(ticket))
+    CruAuthLib::AccessToken.del(token) if token
   end
 end

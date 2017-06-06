@@ -15,7 +15,7 @@ gem 'oj_mimic_json'
 # rubyCAS
 gem 'rubycas-client-rails'
 
-gem 'cru_lib', git: 'https://github.com/CruGlobal/cru_lib.git'
+gem 'cru-auth-lib', '~> 0.1.0'
 
 gem 'xml-simple', require: 'xmlsimple'
 
