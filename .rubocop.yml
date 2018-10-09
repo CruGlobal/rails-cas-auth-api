@@ -1,7 +1,6 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
-  Include:
-    - Rakefile
-    - config.ru
   Exclude:
     - docker/**/*
     - db/**/*
@@ -9,7 +8,8 @@ AllCops:
     - vendor/**/*
     - bin/**/*
 
-  RunRailsCops: true
+Rails:
+  Enabled: true
 
 Documentation:
   Enabled: false
