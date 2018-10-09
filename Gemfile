@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails-api'
-gem 'active_model_serializers', git: 'git://github.com/rails-api/active_model_serializers.git'
+gem 'rails', '4.2.10'
+gem 'active_model_serializers', git: 'https://github.com/rails-api/active_model_serializers.git', ref: '7d4f0c5c'
 gem 'puma'
 gem 'newrelic_rpm'
 gem 'rails-api-newrelic'
@@ -11,6 +12,7 @@ gem 'rollbar'
 gem 'syslog-logger'
 gem 'oj'
 gem 'oj_mimic_json'
+gem 'ddtrace'
 
 # rubyCAS
 gem 'rubycas-client-rails'
@@ -34,7 +36,7 @@ group :test do
   gem 'simplecov', require: false
   gem 'factory_girl_rails'
   gem 'shoulda', require: false
-  gem 'rubocop', '~> 0.34.0'
+  gem 'rubocop'
   gem 'fakeredis', :require => 'fakeredis/rspec'
   gem 'coveralls', require: false
 end
