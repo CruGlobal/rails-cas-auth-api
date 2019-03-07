@@ -40,15 +40,15 @@ RSpec.describe V1::TokensController, type: :controller do
         .with(query: hash_including(ticket: service_ticket))
         .to_return(status: 200, body: proxy_validate_response)
       CruAuthLib.redis_client.setex(redis_key, 30, pgt)
-      get :new, st: service_ticket
+      get :new, params: { st: service_ticket }
       expect(response).to be_success
       expect(response).to have_http_status(200)
       expect(response.content_type).to eq('application/json')
       json = JSON.parse(response.body)
-      expect(json['data']['attributes']['key_guid']).to eq(guid)
+      expect(json['data']['attributes']['key-guid']).to eq(guid)
       expect(json['data']['attributes']['email']).to eq(email)
-      expect(json['data']['attributes']['first_name']).to eq(first_name)
-      expect(json['data']['attributes']['last_name']).to eq(last_name)
+      expect(json['data']['attributes']['first-name']).to eq(first_name)
+      expect(json['data']['attributes']['last-name']).to eq(last_name)
     end
 
     it 'responds with an HTTP 400 for invalid service ticket' do
@@ -64,7 +64,7 @@ RSpec.describe V1::TokensController, type: :controller do
         .with(query: hash_including(ticket: service_ticket))
         .to_return(status: 200, body: proxy_validate_response)
 
-      get :new, st: service_ticket
+      get :new, params: { st: service_ticket }
       expect(response).to have_http_status(400)
     end
   end
