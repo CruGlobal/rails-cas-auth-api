@@ -1,11 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'rails-api'
-gem 'rails', '4.2.10'
-gem 'active_model_serializers', git: 'https://github.com/rails-api/active_model_serializers.git', ref: '7d4f0c5c'
-gem 'puma'
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
+  "https://github.com/#{repo_name}.git"
+end
+
+gem 'rails', '~> 5.0.7'
+gem 'active_model_serializers'
+gem 'puma', '~> 3.0'
 gem 'newrelic_rpm'
-gem 'rails-api-newrelic'
 gem 'versionist'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rollbar'
