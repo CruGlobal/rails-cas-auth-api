@@ -1,13 +1,12 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
-  "https://github.com/#{repo_name}.git"
-end
+ruby '2.3.8'
 
-gem 'rails', '~> 5.1.6'
+gem 'rails', '~> 5.2.3'
 gem 'active_model_serializers'
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.11'
+gem 'bootsnap', '>= 1.1.0', require: false
 gem 'newrelic_rpm'
 gem 'versionist'
 gem 'rack-cors', require: 'rack/cors'

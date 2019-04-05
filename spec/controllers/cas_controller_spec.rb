@@ -4,7 +4,7 @@ RSpec.describe CasController, type: :controller do
   describe 'GET #proxy_callback' do
     it 'responds successfully with an HTTP 200 OK when missing pgtIou' do
       get :proxy_callback
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response).to have_http_status(200)
     end
 
@@ -14,7 +14,7 @@ RSpec.describe CasController, type: :controller do
       redis_key = ['rails_cas_auth_client', 'pgt_iou', pgt_iou].join(':')
 
       get :proxy_callback, params: { pgtIou: pgt_iou, pgtId: pgt_id }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response).to have_http_status(200)
       expect(CruAuthLib.redis_client.get(redis_key)).to eq(pgt_id)
     end
@@ -34,7 +34,7 @@ RSpec.describe CasController, type: :controller do
           <samlp:SessionIndex>1</samlp:SessionIndex>
         </samlp:LogoutRequest>'
       post :logout, params: { path: 'logout', logoutRequest: logout_request }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response).to have_http_status(200)
     end
   end

@@ -41,7 +41,7 @@ RSpec.describe V1::TokensController, type: :controller do
         .to_return(status: 200, body: proxy_validate_response)
       CruAuthLib.redis_client.setex(redis_key, 30, pgt)
       get :new, params: { st: service_ticket }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response).to have_http_status(200)
       expect(response.content_type).to eq('application/json')
       json = JSON.parse(response.body)

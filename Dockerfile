@@ -8,6 +8,7 @@ COPY docker/puma_callback.rb /etc/puma_callback.rb
 COPY docker/supervisord-*.conf /etc/supervisor/conf.d/
 
 ARG RAILS_ENV=production
+ARG SECRET_KEY_BASE
 
 COPY Gemfile Gemfile.lock ./
 
