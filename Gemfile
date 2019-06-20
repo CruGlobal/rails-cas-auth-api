@@ -42,3 +42,6 @@ group :test do
   gem 'fakeredis', :require => 'fakeredis/rspec'
   gem 'coveralls', require: false
 end
+gem 'lograge'
+gem 'ougai', '~> 1.7'
+gem 'dogstatsd-ruby'
