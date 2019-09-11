@@ -7,5 +7,7 @@ cache:
 services:
 - redis-server
 script:
-- bundle exec rubocop -R
+- bundle exec rubocop
 - bundle exec rspec spec
+- bundle exec bundle audit check
+- bundle exec brakeman -A -q --ensure-latest --no-pager

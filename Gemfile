@@ -24,11 +24,14 @@ gem 'cru-auth-lib', '~> 0.1.0'
 gem 'xml-simple', require: 'xmlsimple'
 
 group :development, :test do
+  gem 'brakeman'
+  gem 'bundler-audit'
   gem 'dotenv-rails'
   gem 'guard-rubocop'
   gem 'guard-rspec'
   gem 'rspec-rails'
   gem 'spring'
+  gem 'standard'
   gem 'pry-rails'
   gem 'awesome_print'
 end
