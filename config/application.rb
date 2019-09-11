@@ -1,10 +1,10 @@
-require_relative 'boot'
+require_relative "boot"
 
 # require "rails/all"
-require 'active_model/railtie'
+require "active_model/railtie"
 # require 'active_job/railtie'
 # require 'active_record/railtie'
-require 'action_controller/railtie'
+require "action_controller/railtie"
 # require 'action_mailer/railtie'
 # require 'action_view/railtie'
 # require 'sprockets/railtie'
@@ -13,11 +13,11 @@ require 'action_controller/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-require_relative '../lib/log/logger'
+require_relative "../lib/log/logger"
 module CasAuthenticatedApi
   class Application < Rails::Application
     # Enable ougai
-    config.logger = Log::Logger.new(Rails.root.join('log', 'datadog.log'))
+    config.logger = Log::Logger.new(Rails.root.join("log", "datadog.log"))
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
@@ -32,8 +32,8 @@ module CasAuthenticatedApi
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*',
+        origins "*"
+        resource "*",
                  headers: :any,
                  methods: [:get, :post, :delete, :put, :patch, :options, :head],
                  max_age: 0
@@ -43,7 +43,7 @@ module CasAuthenticatedApi
     config.log_formatter = ::Logger::Formatter.new
 
     # RubyCAS config
-    config.rubycas.cas_base_url = ENV.fetch('CAS_BASE_URL')
+    config.rubycas.cas_base_url = ENV.fetch("CAS_BASE_URL")
     config.rubycas.logger = Rails.logger
 
     # Settings in config/environments/* take precedence over those specified here.

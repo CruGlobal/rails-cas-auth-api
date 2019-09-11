@@ -1,6 +1,6 @@
 workers 2
-shared_dir = '/opt/puma'
-rails_env = ENV['ENVIRONMENT'] || "production"
+shared_dir = "/opt/puma"
+rails_env = ENV["ENVIRONMENT"] || "production"
 environment rails_env
 bind "unix://#{shared_dir}/sockets/puma.callback.sock"
 
