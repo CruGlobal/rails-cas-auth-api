@@ -5,10 +5,10 @@ module V1
     before_action :authenticate_request, except: [:new]
 
     def new
-      render_error "You must pass in a service ticket ('st' parameter)" and return if params[:st].blank?
+      render_error("You must pass in a service ticket ('st' parameter)") && return if params[:st].blank?
 
       st = validate_service_ticket(params[:st])
-      render_error 'Invalid service ticket' and return unless st.is_valid?
+      render_error("Invalid service ticket") && return unless st.is_valid?
 
       access_token = generate_access_token(st)
       store_service_ticket(st, access_token)
@@ -17,7 +17,7 @@ module V1
 
     def destroy
       CruAuthLib::AccessToken.del(@access_token.token)
-      render status: :ok, plain: 'OK'
+      render status: :ok, plain: "OK"
     end
 
     protected
@@ -34,8 +34,8 @@ module V1
 
     # Generate Access Token
     def generate_access_token(st)
-      map = { guid: 'ssoGuid', email: 'email', key_guid: 'theKeyGuid',
-              relay_guid: '', first_name: 'firstName', last_name: 'lastName' }
+      map = {guid: "ssoGuid", email: "email", key_guid: "theKeyGuid",
+             relay_guid: "", first_name: "firstName", last_name: "lastName",}
       attributes = {}
       map.each do |k, v|
         attributes[k] = st.extra_attributes[v] if st.extra_attributes.key?(v)
