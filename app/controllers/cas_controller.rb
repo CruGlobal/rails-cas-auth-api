@@ -1,16 +1,18 @@
 class CasController < ApplicationController
   def logout
-    render_error 'POST method not supported' and return unless logout_request?
+    render_error("POST method not supported") && return unless logout_request?
     ticket = service_ticket
     invalidate_ticket(ticket) if ticket
-    render status: :ok, plain: 'OK'
+    render status: :ok, plain: "OK"
   end
 
   def proxy_callback
-    CruAuthLib.redis_client.setex(
-      redis_pgt_iou_key(params[:pgtIou]), 30, params[:pgtId]
-    ) unless params[:pgtId].blank? || params[:pgtIou].blank?
-    render status: :ok, plain: 'OK'
+    unless params[:pgtId].blank? || params[:pgtIou].blank?
+      CruAuthLib.redis_client.setex(
+        redis_pgt_iou_key(params[:pgtIou]), 30, params[:pgtId]
+      )
+    end
+    render status: :ok, plain: "OK"
   end
 
   private
@@ -22,7 +24,7 @@ class CasController < ApplicationController
 
   def service_ticket
     xml = XmlSimple.xml_in(params[:logoutRequest])
-    xml['SessionIndex'][0]
+    xml["SessionIndex"][0]
   rescue
     nil
   end
