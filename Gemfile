@@ -15,6 +15,7 @@ gem "syslog-logger"
 gem "oj"
 gem "oj_mimic_json"
 gem "ddtrace"
+gem "awesome_print"
 
 # rubyCAS
 gem "rubycas-client-rails"
@@ -33,7 +34,6 @@ group :development, :test do
   gem "spring"
   gem "standard"
   gem "pry-rails"
-  gem "awesome_print"
 end
 
 group :test do
