@@ -6,6 +6,6 @@ services:
   - redis-server
 script:
   - bundle exec rspec spec
-  - bundle exec bundle audit check
+  - bundle exec bundle audit check --update
   - bundle exec brakeman -A -q --ensure-latest --no-pager
   - bundle exec standardrb
