@@ -1,13 +1,11 @@
 sudo: false
 language: ruby
-rvm:
-  - 2.6.4
 cache:
   bundler: true
 services:
   - redis-server
 script:
   - bundle exec rspec spec
-  - bundle exec bundle audit check
+  - bundle exec bundle audit check --update
   - bundle exec brakeman -A -q --ensure-latest --no-pager
   - bundle exec standardrb

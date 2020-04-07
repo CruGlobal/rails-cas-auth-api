@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.4"
+ruby "2.6.5"
 
 gem "rails", "~> 5.2.3"
 gem "active_model_serializers"
@@ -15,6 +15,7 @@ gem "syslog-logger"
 gem "oj"
 gem "oj_mimic_json"
 gem "ddtrace"
+gem "awesome_print"
 
 # rubyCAS
 gem "rubycas-client-rails"
@@ -33,7 +34,6 @@ group :development, :test do
   gem "spring"
   gem "standard"
   gem "pry-rails"
-  gem "awesome_print"
 end
 
 group :test do
