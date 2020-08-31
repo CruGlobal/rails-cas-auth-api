@@ -6,7 +6,7 @@ RSpec.describe V1::ServicesController, type: :controller do
       get :show
       expect(response).to be_successful
       expect(response).to have_http_status(200)
-      expect(response.content_type).to eq("application/json")
+      expect(response.content_type).to eq("application/json; charset=utf-8")
       json = JSON.parse(response.body)
       expect(json["data"]["id"]).to eq(new_v1_token_url)
     end
