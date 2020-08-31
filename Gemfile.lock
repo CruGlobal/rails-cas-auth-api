@@ -142,7 +142,6 @@ GEM
     minitest (5.14.0)
     msgpack (1.3.3)
     nenv (0.2.0)
-    newrelic_rpm (6.0.0.351)
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
@@ -307,7 +306,6 @@ DEPENDENCIES
   guard-rspec
   guard-rubocop
   lograge
-  newrelic_rpm
   oj
   oj_mimic_json
   ougai (~> 1.7)

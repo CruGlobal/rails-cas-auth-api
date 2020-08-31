@@ -7,7 +7,6 @@ gem "rails", "~> 5.2.3"
 gem "active_model_serializers"
 gem "puma", "~> 3.11"
 gem "bootsnap", ">= 1.1.0", require: false
-gem "newrelic_rpm"
 gem "versionist"
 gem "rack-cors", require: "rack/cors"
 gem "rollbar"
