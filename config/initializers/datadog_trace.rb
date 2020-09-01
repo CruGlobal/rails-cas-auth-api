@@ -17,9 +17,6 @@ Datadog.configure do |c|
   # Redis
   c.use :redis, service_name: "#{ENV["PROJECT_NAME"]}-redis"
 
-  # Sidekiq
-  c.use :sidekiq, service_name: "#{ENV["PROJECT_NAME"]}-sidekiq"
-
   # Net::HTTP
   c.use :http, service_name: "#{ENV["PROJECT_NAME"]}-http"
 end

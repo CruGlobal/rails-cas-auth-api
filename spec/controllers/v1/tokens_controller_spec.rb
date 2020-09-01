@@ -43,7 +43,7 @@ RSpec.describe V1::TokensController, type: :controller do
       get :new, params: {st: service_ticket}
       expect(response).to be_successful
       expect(response).to have_http_status(200)
-      expect(response.content_type).to eq("application/json")
+      expect(response.content_type).to eq("application/json; charset=utf-8")
       json = JSON.parse(response.body)
       expect(json["data"]["attributes"]["key-guid"]).to eq(guid)
       expect(json["data"]["attributes"]["email"]).to eq(email)

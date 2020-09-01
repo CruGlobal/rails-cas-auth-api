@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::API
-  force_ssl(if: :ssl_configured?, except: :lb)
-
   protected
 
   def redis_ticket_key(ticket)
